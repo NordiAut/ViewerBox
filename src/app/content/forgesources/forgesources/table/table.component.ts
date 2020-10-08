@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UrndatasourcedataService } from '../services/urndatasourcedata.service';
-import { URNSourceModel } from '../shared/URNSourceModel';
-import { URNListModel } from '../shared/URNListModel';
+import { UrndatasourcedataService } from 'src/app/services/urndatasourcedata.service';
+import { URNListModel } from 'src/app/shared/URNListModel';
+import { URNSourceModel } from 'src/app/shared/URNSourceModel';
+
 
 @Component({
   selector: 'app-table',
@@ -24,11 +25,13 @@ export class TableComponent implements OnInit {
       perPage: 3,
     },
     actions: {
+
+      add: false,
       edit: false,
       position: 'right',
       columnTitle: '',
       custom: [
-        { name: 'viewrecord', title: '<i class="fa fa-eye"></i>'}],
+        { name: 'addCustom', title: '<p>Add</P>'}],
     },
     columns: {
       name: {

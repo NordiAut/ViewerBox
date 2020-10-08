@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentcenterComponent } from './contentcenter.component';
+import { SectionrightComponent } from './sectionright.component';
 
-describe('ContentcenterComponent', () => {
-  let component: ContentcenterComponent;
-  let fixture: ComponentFixture<ContentcenterComponent>;
+describe('SectionrightComponent', () => {
+  let component: SectionrightComponent;
+  let fixture: ComponentFixture<SectionrightComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContentcenterComponent ]
+      declarations: [ SectionrightComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentcenterComponent);
+    fixture = TestBed.createComponent(SectionrightComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
