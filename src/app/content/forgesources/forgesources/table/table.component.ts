@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { UrndatasourcedataService } from 'src/app/services/urndatasourcedata.service';
-import { URNListModel } from 'src/app/shared/URNListModel';
 import { URNSourceModel } from 'src/app/shared/URNSourceModel';
 
 
@@ -13,7 +12,6 @@ import { URNSourceModel } from 'src/app/shared/URNSourceModel';
 export class TableComponent implements OnInit {
 
   urnSourceModel: URNSourceModel[];
-  urnListModel: URNListModel[];
 
   source: LocalDataSource; // add a property to the component
 
@@ -28,10 +26,10 @@ export class TableComponent implements OnInit {
 
       add: false,
       edit: false,
-      position: 'right',
       columnTitle: '',
       custom: [
         { name: 'addCustom', title: '<p>Add</P>'}],
+      position: 'right',
     },
     columns: {
       name: {

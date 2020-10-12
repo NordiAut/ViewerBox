@@ -15,4 +15,16 @@ export class UrndatasourcedataService {
     return this.http.get<URNSourceModel[]>(this.url);
   }
 
+  getSingleUrn(urnSourceModelId: number): any{
+    return this.http.get<URNSourceModel>(`${this.url}/${urnSourceModelId}`);
+  }
+
+  addUrn(urnSourceModel: URNSourceModel): any {
+    return this.http.post<URNSourceModel>(this.url, urnSourceModel);
+  }
+
+  deleteUrn(urnSourceModelId: number): any{
+    return this.http.delete(this.url + '/' + urnSourceModelId);
+  }
+
 }

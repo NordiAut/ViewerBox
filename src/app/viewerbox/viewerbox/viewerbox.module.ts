@@ -9,6 +9,18 @@ import { ForgeviewerComponent } from 'src/app/content/forgesources/forgesources/
 import { ForgesourcesComponent } from 'src/app/content/forgesources/forgesources/forgesources/forgesources.component';
 import { LoggingComponent } from 'src/app/content/forgesources/forgesources/logging/logging/logging.component';
 import { TableComponent } from 'src/app/content/forgesources/forgesources/table/table.component';
+import { TablengprimeComponent } from 'src/app/content/forgesources/forgesources/tablengprime/tablengprime.component';
+import {TableModule} from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
+import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {ButtonModule} from 'primeng/button';
+
+
 
 
 
@@ -23,10 +35,20 @@ import { TableComponent } from 'src/app/content/forgesources/forgesources/table/
     SectioncenterComponent,
     SectionleftComponent,
     SectionrightComponent,
+    TablengprimeComponent
   ],
   imports: [
     Ng2SmartTableModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule,
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    DialogModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    ButtonModule
   ],
   exports: [ViewerboxComponent]
 

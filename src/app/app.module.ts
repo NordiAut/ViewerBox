@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ViewerBoxModule } from './viewerbox/viewerbox/viewerbox.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { HttpClientModule } from '@angular/common/http';
+import {TableModule} from 'primeng/table';
+
 
 
 
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ViewerBoxModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    TableModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
