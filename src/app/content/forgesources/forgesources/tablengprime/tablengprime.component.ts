@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SortEvent } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { UrndatasourcedataService } from 'src/app/services/urndatasourcedata.service';
@@ -14,7 +14,7 @@ export class TablengprimeComponent implements OnInit {
 
   private urnSourceModelSub$: Subscription = new Subscription();
 
-  urnSourceModel: URNSourceModel[];
+  urnSourceModels: URNSourceModel[];
   urnListModels = [] as URNSourceModel[];
   urnListModel: URNSourceModel;
   selectedUrnListModel: URNSourceModel;
@@ -23,6 +23,9 @@ export class TablengprimeComponent implements OnInit {
   displayDialogDelete: boolean;
   newUrnListModel: boolean;
   submitted = false;
+
+
+  @Output() sendModelAction = new EventEmitter<URNSourceModel>();
 
 
   constructor(private urnService: UrndatasourcedataService) { }
@@ -48,11 +51,11 @@ export class TablengprimeComponent implements OnInit {
 
   private getAllUrn(): void {
     this.urnSourceModelSub$ = this.urnService.getAllUrn().subscribe(res => {
-      console.log('Result from getOrders: ', res);
-      this.urnSourceModel = res;
-      console.log('Result from urnSourceModel: ', this.urnSourceModel);
+      // console.log('Result from getOrders: ', res);
+      this.urnSourceModels = res;
+      // console.log('Result from urnSourceModel: ', this.urnSourceModels);
       this.buildTable();
-      console.log('Result from list: ', this.urnListModels);
+      // console.log('Result from list: ', this.urnListModels);
       },
       error => {
         console.log(error);
@@ -60,9 +63,9 @@ export class TablengprimeComponent implements OnInit {
     }
 
   buildTable(): void {
-    console.log(this.urnSourceModel);
+    // console.log(this.urnSourceModels);
     this.urnListModels = [];
-    this.urnSourceModel.forEach(element => {
+    this.urnSourceModels.forEach(element => {
     this.urnListModels.push(
         {
           urnSourceModelId: element.urnSourceModelId,
@@ -140,8 +143,8 @@ export class TablengprimeComponent implements OnInit {
       this.urnListModel = null;
       this.displayDialogAdd = false;
     // this.getAllUrn();
-      console.log('urnsourcemodel', this.urnSourceModel);
-      console.log('urnListModel', this.urnListModel);
+    //  console.log('urnsourcemodel', this.urnSourceModels);
+    //   console.log('urnListModel', this.urnListModel);
   }
 
 
@@ -161,14 +164,25 @@ export class TablengprimeComponent implements OnInit {
     this.urnListModel = null;
     this.displayDialogDelete = false;
     // this.getAllUrn();
-    console.log('urnsourcemodel', this.urnSourceModel);
-    console.log('urnListModel', this.urnListModel);
+    // console.log('urnsourcemodel', this.urnSourceModels);
+    // console.log('urnListModel', this.urnListModel);
   }
 
   onRowSelect(event): void {
-    this.newUrnListModel = false;
-    this.urnListModel = this.cloneModel(event.data);
-    this.displayDialogDelete = true;
+
+    this.sendUrnSourceModel(event.data);
+
+    // Old
+    // this.newUrnListModel = false;
+    // this.urnListModel = this.cloneModel(event.data);
+    // this.displayDialogDelete = true;
+  }
+
+  sendUrnSourceModel(urnSourceModel: URNSourceModel): void  {
+    // console.log('sendUrnSourceModel called!');
+    this.urnListModel = this.cloneModel(urnSourceModel);
+    //  console.log('urnListModel', this.urnListModel);
+    this.sendModelAction.emit(this.urnListModel);
   }
 
   cancel(): void {
@@ -197,5 +211,6 @@ export class TablengprimeComponent implements OnInit {
     // const viewerbox = document.querySelector("viewer-box") as any;
     // viewerbox.loadViewerboxSingleUrn(urn, "forge", urngroupkey);
   }
+
 
 }

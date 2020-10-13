@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { URNSourceModel } from 'src/app/shared/URNSourceModel';
 
 @Component({
   selector: 'app-forgeviewer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgeviewerComponent implements OnInit {
 
+
+  @Input() selectedUrnListModel?: URNSourceModel;
+
   constructor() { }
 
   ngOnInit(): void {
+
+    this.selectedUrnListModel = null;
+
   }
 
 }

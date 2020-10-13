@@ -1,6 +1,6 @@
 <div>
     <h2>Forge Viewer</h2>
-    <h3 id="urn_label"></h3>     
+    <h3 id="urn_label" *ngIf="selectedUrnListModel !== null ">{{ selectedUrnListModel.name }}</h3>
 </div>
 <div>
     <a style="float: left" class="btn btn-primary" href="#" id="btnstartIndexing" role="button">Start Sync</a>
