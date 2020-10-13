@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { SortEvent } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { UrndatasourcedataService } from 'src/app/services/urndatasourcedata.service';
@@ -24,6 +24,9 @@ export class TablengprimeComponent implements OnInit {
   newUrnListModel: boolean;
   submitted = false;
 
+  @ViewChild('urnTable') urnTable: any;
+
+
 
   @Output() sendModelAction = new EventEmitter<URNSourceModel>();
 
@@ -38,16 +41,9 @@ export class TablengprimeComponent implements OnInit {
       { field: 'mountedTo', header: 'Anhängepunkt' },
       { field: 'lastSync', header: 'Letzter Sync' },
      ];
+
+
   }
-
-
-//   private getAllUrn(): void {
-//     const allURN$ = this.urnService.getAllUrn().subscribe(res => {
-//       console.log('Result from getOrders: ', res);
-//       this.urnSourceModel = res;
-//       this.buildTable();
-//     });
-//  }
 
   private getAllUrn(): void {
     this.urnSourceModelSub$ = this.urnService.getAllUrn().subscribe(res => {
@@ -170,12 +166,17 @@ export class TablengprimeComponent implements OnInit {
 
   onRowSelect(event): void {
 
+    this.urnTable.selection = this.selectedUrnListModel;
     this.sendUrnSourceModel(event.data);
 
     // Old
     // this.newUrnListModel = false;
     // this.urnListModel = this.cloneModel(event.data);
     // this.displayDialogDelete = true;
+  }
+
+  cancelUnselect(event): void  {
+    this.urnTable.selection = event.data;
   }
 
   sendUrnSourceModel(urnSourceModel: URNSourceModel): void  {

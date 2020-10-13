@@ -21,12 +21,8 @@ export class ViewerboxComponent implements OnInit {
 
     this.isSelected = true;
     this.selectedUrnListModel = $event;
-    console.log(this.selectedUrnListModel);
+    // console.log(this.selectedUrnListModel);
 
-  }
-
-  log(): void{
-    console.log(this.selectedUrnListModel);
   }
 
 }

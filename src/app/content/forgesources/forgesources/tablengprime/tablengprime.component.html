@@ -1,6 +1,6 @@
 <h2>Liste Forge Quellen</h2> 
 
-<p-table [columns]="cols" [value]="urnListModels" selectionMode="single" [(selection)]="selectedUrnListModel" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5">
+<p-table [columns]="cols" [value]="urnListModels"  #urnTable selectionMode="single" [(selection)]="selectedUrnListModel" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="cancelUnselect($event)" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns" [pSortableColumn]="col.field">
@@ -10,23 +10,19 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
+        
         <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
+            
+            <td *ngFor="let col of columns" [pRowToggler]="rowData">
+                {{rowData[col.field] }}
             </td>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData">
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
-            </td>
-        </tr>
-    </ng-template>
+
     <ng-template pTemplate="summary" let-rowData>
         <div style="text-align:left">
             <button type="button" pButton (click)="showDialogToAdd()" label="Hinzufügen" style="float: left"></button>            
-            <button type="button" pButton (click)="showDialogToDelete()" label="Löschen" style="float: left"></button>                   
+            <button type="button" pButton (click)="showDialogToDelete()" label="Löschen" style="float: right"></button>                   
         </div>
     </ng-template>
 </p-table>
