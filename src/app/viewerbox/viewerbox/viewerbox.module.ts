@@ -19,6 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ButtonModule} from 'primeng/button';
+import { ViewerModule } from 'ng2-adsk-forge-viewer';
 
 
 
@@ -35,7 +36,8 @@ import {ButtonModule} from 'primeng/button';
     SectioncenterComponent,
     SectionleftComponent,
     SectionrightComponent,
-    TablengprimeComponent
+    TablengprimeComponent,
+
   ],
   imports: [
     Ng2SmartTableModule,
@@ -48,7 +50,8 @@ import {ButtonModule} from 'primeng/button';
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    ButtonModule
+    ButtonModule,
+    ViewerModule
   ],
   exports: [ViewerboxComponent]
 

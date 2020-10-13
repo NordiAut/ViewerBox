@@ -1,11 +1,2 @@
-<div>
-    <h2>Forge Viewer</h2>
-    <h3 id="urn_label" *ngIf="selectedUrnListModel !== null ">{{ selectedUrnListModel.name }}</h3>
-</div>
-<div>
-    <a style="float: left" class="btn btn-primary" href="#" id="btnstartIndexing" role="button">Start Sync</a>
-    <a style="float: right" class="btn btn-primary" href="#" id="btnclearviewer" role="button">lösche Viewer</a>
-  </div>
-  <div id="viewerboxdiv" style="height: 100%;"></div>
-  <!-- <viewer-box viewerboxserviceurl="http://localhost:5000">
-   </viewer-box> -->
+<adsk-forge-viewer [viewerOptions]="viewerOptions"
+                   (onSelectionChanged)="selectionChanged($event)"></adsk-forge-viewer>
