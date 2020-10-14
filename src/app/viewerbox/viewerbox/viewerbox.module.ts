@@ -20,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ButtonModule} from 'primeng/button';
 import { ViewerModule } from 'ng2-adsk-forge-viewer';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -53,7 +54,10 @@ import { ViewerModule } from 'ng2-adsk-forge-viewer';
     ButtonModule,
     ViewerModule
   ],
-  exports: [ViewerboxComponent]
+  exports: [ViewerboxComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 
 })
 export class ViewerBoxModule { }
